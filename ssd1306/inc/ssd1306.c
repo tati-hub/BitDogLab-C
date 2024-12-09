@@ -1,4 +1,4 @@
-#include "./ssd1306.h""
+#include "./ssd1306.h"
 
 void ssd1306_init(ssd1306_t *ssd, uint8_t width, uint8_t height, bool external_vcc, uint8_t address, i2c_inst_t *i2c) {
   ssd->width = width;
@@ -74,4 +74,41 @@ void ssd1306_pixel(ssd1306_t *ssd, uint8_t x, uint8_t y, bool value) {
     ssd->ram_buffer[index] |= (1 << pixel);
   else
     ssd->ram_buffer[index] &= ~(1 << pixel);
+}
+
+void ssd1306_fill(ssd1306_t *ssd, bool value) {
+  uint8_t byte = value ? 0xFF : 0x00;
+  for (uint8_t i = 1; i < ssd->bufsize; ++i)
+    ssd->ram_buffer[i] = byte;
+}
+
+void ssd1306_rect(ssd1306_t *ssd, uint8_t top, uint8_t left, uint8_t width, uint8_t height, bool value, bool fill) {
+  for (uint8_t x = left; x < left + width; ++x) {
+    ssd1306_pixel(ssd, x, top, value);
+    ssd1306_pixel(ssd, x, top + height - 1, value);
+  }
+  for (uint8_t y = top; y < top + height; ++y) {
+    ssd1306_pixel(ssd, left, y, value);
+    ssd1306_pixel(ssd, left + width - 1, y, value);
+  }
+
+  if (fill) {
+    for (uint8_t x = left + 1; x < left + width - 1; ++x) {
+      for (uint8_t y = top + 1; y < top + height - 1; ++y) {
+        ssd1306_pixel(ssd, x, y, value);
+      }
+    }
+  }
+}
+
+void ssd1306_line(ssd1306_t *ssd, uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, bool value);
+
+void ssd1306_hline(ssd1306_t *ssd, uint8_t x0, uint8_t x1, uint8_t y, bool value) {
+  for (uint8_t x = x0; x <= x1; ++x)
+    ssd1306_pixel(ssd, x, y, value);
+}
+
+void ssd1306_vline(ssd1306_t *ssd, uint8_t x, uint8_t y0, uint8_t y1, bool value) {
+  for (uint8_t y = y0; y <= y1; ++y)
+    ssd1306_pixel(ssd, x, y, value);
 }

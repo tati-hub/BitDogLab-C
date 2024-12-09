@@ -26,7 +26,9 @@ int main() {
 
   ssd1306_send_data(&ssd);
 
-  ssd1306_pixel(&ssd, 64, 32, true);
+  ssd1306_fill(&ssd, false);
+  ssd1306_hline(&ssd, 0, 127, 32, true);
+  ssd1306_vline(&ssd, 63, 0, 63, true);
 
   ssd1306_send_data(&ssd);
 
