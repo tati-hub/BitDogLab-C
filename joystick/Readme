@@ -6,7 +6,7 @@ Desenvolvimento:
 Como ponto de partida podemos identificar os elementos, ou interfaces, de entrada e saída que serão usados no nosso hardware para implementar este projeto. 
 A interface de entrada é um joystick que converte a posição da sua alavanca em sinais eletrônicos. No caso da BitDogLab temos um joystick analógico em que a posição x e y da alavanca é convertida em dois níveis de tensão (sinais) que variam de 0 até 3,3V. A figura a seguir mostra a fotografia de um joystick ao lado do seu esquema elétrico simplificado. 
 
-
+![Joystick e esquema elétrico simplificado](images/joystick-esquema.png)
 Figura: foto do joystick e seu esquema elétrico simplificado
 
 Quando o joystick está na posição neutra os valores dos sinais são Vx = Vy = VCC/2. O movimento da alavanca do joystick, altera proporcionalmente, o valor destes sinais. O conversor Analógico Digital, acessivel através dos GPIOs 26 e 27, do microcotrolador RP2040 converte estes sinais analógicos em palavras digitais que a partir daí estão prontos para a próxima etapa de processamento. Além disto, este joystick também possui um botão que pode ser acionado quando o usuário aperta a alavanca. Este botão está conectado ao GPIO 22, que deve ser configurado com entrada digital com pull-up, no RP2040. 
