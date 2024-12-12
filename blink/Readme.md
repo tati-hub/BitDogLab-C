@@ -1,5 +1,5 @@
 # Blink
-A seguir desenvolvemos, passo-a-passo,  as etapas de síntese de um programa - em linguagem C - para controlar o piscar de um LED, presente na BitDogLab, utilizando um GPIO (General Purpose Input/Output) configurado como saída digital.
+A seguir desenvolvemos, passo a passo,  as etapas de síntese de um programa - em linguagem C - para controlar o piscar de um LED, presente na BitDogLab, utilizando um GPIO (General Purpose Input/Output) configurado como saída digital.
  
 ## Atividade: 
 Vamos desenvolver um programa - em C - para acionar um LED RGB em que o pino azul está conectado ao GPIO 12 da BitDogLab. Ao configurar o pino em nível lógico alto, o LED acende na cor azul; em nível lógico baixo, ele apaga. O programa deve ser estruturado para realizar estas tarefas de forma repetitiva, de forma a acender e apagar o LED continuamente - fazendo-o piscar.
