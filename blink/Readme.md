@@ -38,13 +38,13 @@ No caso desta atividade vamos usar C. Segue o código em linguagem C para a aç�
  */
 ```
 
-** Inclusão de Biblioteca:** Inclui a biblioteca "pico/stdlib.h" para acessar funções de GPIO e temporização.
+**Inclusão de Biblioteca:** Inclui a biblioteca "pico/stdlib.h" para acessar funções de GPIO e temporização.
 
 ```c
 #include "pico/stdlib.h"
 ```
 
-** Definições e Configurações:** Define o pino do LED onde ele está conectado (exemplo: GPIO 12). Inicializa o pino do LED e configura-o como saída.
+**Definições e Configurações:** Define o pino do LED onde ele está conectado (exemplo: GPIO 12). Inicializa o pino do LED e configura-o como saída.
 
 ```c
 int main() {
