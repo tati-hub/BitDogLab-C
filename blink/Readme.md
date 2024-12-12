@@ -14,14 +14,14 @@ Figura: Fluxograma do código para fazer o LED piscar (acende e apaga com delay 
 
 A partir deste fluxograma, podemos destacar e detalhar as seguintes etapas principais num novo documento chamado de pseudocódigo:
 
-- **Início:** Representa o ponto de partida do programa.
-- **Configuração de Inicialização:** O programa começa incluindo bibliotecas e configurando a saída digital que será estruturada para fazer o LED piscar.
-- **Loop Infinito:** Uma estrutura de repetição (loop) onde o programa executa repetidas vezes a ação de acender e apagar o LED, com um certo tempo de espera entre as ações.
--- a. *Acende LED:* Configura-se o nível lógico de saída do GPIO 12 como alto, fazendo o LED acender na cor azul.
--- b. *Delay:* O programa fica inativo por um certo tempo, com o LED permanecendo aceso neste período.
--- c. *Apaga LED:* Em seguida, o programa configura o nível lógico de saída do GPIO 12 como baixo, fazendo o LED apagar.
--- d. *Delay:* O programa fica inativo novamente, e o LED fica apagado enquanto isso.
-- **Retorno ao Início do Loop:** Ao fim do processo abcd, o programa retorna ao início do loop, onde ele acende novamente o LED e prossegue com os outros passos, repetindo o ciclo indefinidamente.
+**Início:** Representa o ponto de partida do programa.
+**Configuração de Inicialização:** O programa começa incluindo bibliotecas e configurando a saída digital que será estruturada para fazer o LED piscar.
+**Loop Infinito:** Uma estrutura de repetição (loop) onde o programa executa repetidas vezes a ação de acender e apagar o LED, com um certo tempo de espera entre as ações.
+- a. *Acende LED:* Configura-se o nível lógico de saída do GPIO 12 como alto, fazendo o LED acender na cor azul.
+- b. *Delay:* O programa fica inativo por um certo tempo, com o LED permanecendo aceso neste período.
+- c. *Apaga LED:* Em seguida, o programa configura o nível lógico de saída do GPIO 12 como baixo, fazendo o LED apagar.
+- d. *Delay:* O programa fica inativo novamente, e o LED fica apagado enquanto isso.
+**Retorno ao Início do Loop:** Ao fim do processo abcd, o programa retorna ao início do loop, onde ele acende novamente o LED e prossegue com os outros passos, repetindo o ciclo indefinidamente.
 
 Na etapa seguinte, podemos transcrever o pseudocódigo em um programa, escolhendo alguma linguagem específica, respeitando sua sintaxe e convenções. Esta construção pode ser realizada etapa por etapa, respeitando a sequência do pseudocódigo, ou então pode ser reaproveitada de um repositório. Normalmente é aqui que o desenvolvedor investe um certo tempo, depurando o código e testando, até que o resultado atenda às suas expectativas.
 
