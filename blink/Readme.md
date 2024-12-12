@@ -29,7 +29,7 @@ No caso desta atividade vamos usar C. Segue o código em linguagem C para a aç�
 
 ## Pseudocódigo - Linguagem C
 
-Início: Representa o ponto de partida do programa. Para começar, incluímos um comentário como cabeçalho.
+**Início:** Representa o ponto de partida do programa. Para começar, incluímos um comentário como cabeçalho.
 
 ```c
 /**
@@ -38,19 +38,15 @@ Início: Representa o ponto de partida do programa. Para começar, incluímos um
  */
 ```
 
-
-Inclusão de Biblioteca: 
-Inclui a biblioteca "pico/stdlib.h" para acessar funções de GPIO e temporização.
-
-Definições e Configurações:
-Define o pino do LED onde ele está conectado (exemplo: GPIO 12).
-Inicializa o pino do LED e configura-o como saída.
-
+** Inclusão de Biblioteca:** Inclui a biblioteca "pico/stdlib.h" para acessar funções de GPIO e temporização.
 
 ```c
 #include "pico/stdlib.h"
+```
 
+** Definições e Configurações:** Define o pino do LED onde ele está conectado (exemplo: GPIO 12). Inicializa o pino do LED e configura-o como saída.
 
+```c
 int main() {
     // Define o pino do LED e o configura como saída
     const uint LED_PIN = 12;  // Substitua com o número do GPIO desejado
@@ -58,15 +54,13 @@ int main() {
     gpio_set_dir(LED_PIN, GPIO_OUT);
 ```
 
-
-Loop Infinito: 
-Define a condição, que é sempre verdadeira, para repetir o loop.
-Liga o LED.
-Aguarda pelo tempo de atraso e define para 250ms.
-Desliga o LED.
-Aguarda pelo tempo de atraso.
-Fim
-
+**Loop Infinito:**
+- Define a condição, que é sempre verdadeira, para repetir o loop.
+- Liga o LED.
+- Aguarda pelo tempo de atraso e define para 250ms.
+- Desliga o LED.
+- Aguarda pelo tempo de atraso.
+- Fim
 
 ```c
     while (true) {
@@ -81,6 +75,33 @@ Fim
 }
 ```
 
+## Código completo em C
+
+```c
+/**
+ * Embarcatech 
+ * Exemplo Blink com a BitDogLab
+ */
+
+#include "pico/stdlib.h"
+
+int main() {
+    // Define o pino do LED e o configura como saída
+    const uint LED_PIN = 12;  // Substitua com o número do GPIO desejado
+    gpio_init(LED_PIN);
+    gpio_set_dir(LED_PIN, GPIO_OUT);
+
+    while (true) {
+        // Liga o LED
+        gpio_put(LED_PIN, true);
+        sleep_ms(250);  // Espera 250ms
+
+        // Desliga o LED
+        gpio_put(LED_PIN, false);
+        sleep_ms(250);  // Espera 250ms
+    }
+}
+```
 
 ## Arquivo CMake
 Além do arquivo em C (extensão .c), é necessário configurar um arquivo CMake para compilar e executar o programa no microprocessador. Este arquivo define as configurações de build do projeto, como as bibliotecas que serão usadas, os arquivos de origem e as especificações do sistema.
