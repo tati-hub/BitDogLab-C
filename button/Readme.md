@@ -97,7 +97,6 @@ sleep_ms(50);
 ## Código completo em C
 
 ```c
-Código completo em C   
 /**
  * Embarcatech 
  * Exemplo Botão com a BitDogLab
