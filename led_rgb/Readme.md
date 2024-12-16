@@ -38,14 +38,14 @@ Assim, teremos todas as possibilidades de cores e suas misturas, sendo que, depo
 
 |  R  |  G  |  B  | Cor resultante |
 |:---:|:---:|:---:|:---:|
-|  0  |  0  |  0  | apagado `rgb(0, 0, 0)` |
-|  0  |  0  |  1  | azul `rgb(0, 0, 255)` |
-|  0  |  1  |  0  | verde `rgb(0, 255, 0)` |
-|  0  |  1  |  1  | ciano `rgb(0, 255, 255)` |
-|  1  |  0  |  0  | vermelho `rgb(255, 0, 0)` |
-|  1  |  0  |  1  | magenta `rgb(255, 0, 255)` |
-|  1  |  1  |  0  | amarelo `rgb(255, 255, 0)` |
-|  1  |  1  |  1  | branco `rgb(255, 255, 255)` |
+|  0  |  0  |  0  | apagado |
+|  0  |  0  |  1  | azul |
+|  0  |  1  |  0  | verde |
+|  0  |  1  |  1  | ciano |
+|  1  |  0  |  0  | vermelho |
+|  1  |  0  |  1  | magenta |
+|  1  |  1  |  0  | amarelo |
+|  1  |  1  |  1  | branco |
 
 ## Lógica textual do código
 
