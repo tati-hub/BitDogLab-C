@@ -2,6 +2,22 @@
 
 A seguir desenvolvemos, passo a passo, as etapas de síntese de um programa - em linguagem C - para acender os pinos do LED RGB, presente na BitDogLab, em uma sequência específica, a fim de exibir as misturas de cores possíveis.
 
+## Introdução:
+
+LEDs, ou Diodos Emissores de Luz, são componentes eletrônicos que convertem energia elétrica em luz. Este processo ocorre através de materiais semicondutores que emitem luz quando energizados, o que os torna extremamente eficientes em comparação a fontes de luz tradicionais, como lâmpadas incandescentes ou fluorescentes, que além da luz emitem bastante calor.
+
+### Tipos e Características dos LEDs:
+
+Os LEDs estão disponíveis em uma variedade de tamanhos e cores, adaptando-se a diferentes necessidades e aplicações. Uma variação particularmente versátil é o LED RGB. Estes LEDs são capazes de emitir luz em vermelho, verde e azul, e podem ser misturados em várias combinações para produzir uma ampla gama de cores. A capacidade de controle de cor permite que sejam utilizados em displays, iluminação decorativa, sinalização, e muitos outros campos.
+
+### LEDs RGB na BitDogLab:
+
+A BitDogLab possui alguns LEDs coloridos, também conhecidos como LEDs RGB. Este nome vem das iniciais Red (vermelho), Green (verde) e Blue (azul). Um LED RGB possui internamente 3 LEDS, um para cada cor. Eles podem ser acesos individualmente ou então combinados para gerar uma mistura de cores.
+
+A seguir mostramos o círculo de cores, onde as principais se misturam e criam outras cores. Observe que no centro, na mistura de todas as cores surge o branco.
+
+![Figura](images/led_rgb-rgb.png)
+
 ## Atividade:
 
 Vamos desenvolver um programa - em C - para acender sequencialmente o LED RGB em cores diferentes, controlando a saída digital dos pinos ligados ao LED de acordo com a ordem de cores a ser exibida, dentro do ciclo. Para isso, controlamos cada cor do LED RGB como ligada ou desligada com o uso de saídas digitais com níveis binários (alto para ligado e baixo para desligado).
@@ -10,7 +26,7 @@ Vamos desenvolver um programa - em C - para acender sequencialmente o LED RGB em
 
 Para começar, vamos definir 3 variáveis binárias chamadas de R, G e B. Há inúmeras formas de implementar um algoritmo que faça com que as 3 variáveis binárias variem por todas as possibilidades de cores. Na figura a seguir, mostramos o círculo de cor com o estado esperado para as 3 variáveis (R, G e B).
 
-![Figura](images/led_rgb-figura.png)
+![Figura](images/led_rgb-rgb_variaveis.png)
 Figura: Definição das variáveis booleanas para cada cor do LED, na ordem R, G e B.
 
 Uma forma de implementar o algoritmo é usando as variáveis booleanas que descrevemos a seguir.
@@ -22,14 +38,14 @@ Assim, teremos todas as possibilidades de cores e suas misturas, sendo que, depo
 
 |  R  |  G  |  B  | Cor resultante |
 |:---:|:---:|:---:|:---:|
-|  0  |  0  |  0  | apagado |
-|  0  |  0  |  1  | azul |
-|  0  |  1  |  0  | verde |
-|  0  |  1  |  1  | ciano |
-|  1  |  0  |  0  | vermelho |
-|  1  |  0  |  1  | magenta |
-|  1  |  1  |  0  | amarelo |
-|  1  |  1  |  1  | branco |
+|  0  |  0  |  0  | apagado `rgb(0,0,0)` |
+|  0  |  0  |  1  | azul `rgb(0,0,255)` |
+|  0  |  1  |  0  | verde `rgb(0,255,0)` |
+|  0  |  1  |  1  | ciano `rgb(0,255,255)` |
+|  1  |  0  |  0  | vermelho `rgb(255,0,0)` |
+|  1  |  0  |  1  | magenta `rgb(255,0,255)` |
+|  1  |  1  |  0  | amarelo `rgb(255,255,0)` |
+|  1  |  1  |  1  | branco `rgb(255,255,255)` |
 
 ## Lógica textual do código
 
