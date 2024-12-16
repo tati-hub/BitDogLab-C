@@ -10,21 +10,47 @@ Vamos desenvolver um programa - em C - para acionar, com o uso de uma GPIO (Gate
 
 Como ponto de partida, precisamos configurar a interface de saída (no caso, o buzzer) que será usada no nosso hardware para implementar este projeto.
 
-Note que o buzzer utilizado é um buzzer passivo, ou seja, requer um sinal externo - com frequência variável - para gerar som. No caso da BitDogLab, os dois buzzers presentes (A e B) são passivos, podendo ser acionados de forma independente e com frequências diferentes.
+A interface de saída é um componente denominado buzzer que emite um sinal sonoro quando é acionado. Existem dois tipos principais de buzzers: passivos e ativos. O buzzer passivo requer um sinal externo - com frequência variável - para gerar som, enquanto o buzzer ativo pode gerar som por si só - com frequência fixa - quando conectado a uma fonte de alimentação. A BitDogLab possui dois buzzers passivos (A e B) que podem ser acionados de forma independente e com frequências diferentes.
 
-Um buzzer passivo é similar a um alto-falante básico, que usa uma bobina eletromagnética e uma membrana para produzir som. Ao aplicar-se um sinal elétrico variável à bobina, cria-se um campo magnético que interage com um ímã, resultando no movimento desta e, consequentemente, da membrana. Quando a membrana vibra, ela desloca o ar ao seu redor e produz ondas acústicas - percebidas como som.
+### Como funciona:
+
+Um buzzer passivo funciona de maneira similar a um alto-falante básico, utilizando uma bobina eletromagnética e uma membrana para produzir som.
+
+Quando um sinal elétrico variável é aplicado à bobina, ele cria um campo magnético que interage com um imã, resultando no movimento da bobina e, consequentemente, da membrana. Esse movimento faz a membrana vibrar, deslocando o ar ao seu redor e produzindo ondas acústicas que são percebidas como som.
+
+### Como a música é produzida utilizando o buzzer?
+
+O som é uma onda que se propaga através de um meio, como ar, água ou sólidos. Essas ondas são criadas por vibrações que deslocam as partículas do meio ao redor.
+
+- **Frequência:** A frequência do som, medida em Hertz (Hz), determina o quão aguda ou grave é a onda sonora. Sons com frequências mais altas são percebidos como tons mais agudos, enquanto frequências mais baixas são percebidas como tons mais graves.
+- **Amplitude:** A amplitude da onda sonora determina o volume do som. Amplitudes maiores resultam em sons mais altos, enquanto amplitudes menores produzem sons mais baixos.
 
 Para controlar um buzzer passivo, é comum usar uma técnica chamada PWM (Modulação por Largura de Pulso). Ao ajustar a frequência do sinal PWM, é possível gerar diferentes tons.
 
 Entender a matemática do som é essencial para utilizar buzzers de forma eficaz. Controlar a frequência e a amplitude permite criar uma ampla gama de sons, desde simples beeps até melodias complexas.
+Na Figura é possível visualizar o aspecto físico do buzzer e seu esquema de ligação presente na BitDog Lab.
 
 ![Figura](images/buzzer-imagem.png)
 ![Figura](images/buzzer-diagrama.png)
 Figura: Foto do buzzer e seu esquema elétrico com as GPIOs que controlam os buzzers A e B.
 
-É importante aponar que não é possível acionar o buzzer diretamente com uma GPIO da Raspberry Pi Pico, devido à corrente necessária para o acionamento, que excede os 12 mA suportados pela GPIO da placa. Por isso, a mediação é feita com um transistor, que amplifica a corrente que passa pelo buzzer.
+O buzzer A possui dois terminais: o terminal 1 está conectado ao VSYS da Raspberry Pi Pico, onde a tensão em VSYS é de 5V, e o terminal 2 está conectado ao coletor de um transistor. A base deste transistor está conectada ao GPIO 21 da Raspberry Pi Pico. O VSYS é uma linha de alimentação no Raspberry Pi Pico que fornece energia para o regulador de 3,3V, responsável por alimentar o núcleo e os periféricos do microcontrolador. Aqui estão alguns detalhes importantes sobre o VSYS no Raspberry Pi Pico:
 
-A BitDogLab oferece uma solução inovadora para a criação de som em modo estéreo, utilizando dois buzzers (A e B) simultaneamente, permitindo a emissão de sons distintos em cada canal, seja o esquerdo ou o direito. Isso não só enriquece a experiência auditiva, como também amplia as possibilidades de design de som, permitindo a criação de efeitos sonoros mais detalhados e imersivos.
+- **Entrada de Energia:**
+    - Pode ser alimentado por uma fonte de tensão externa (como uma bateria ou adaptador) ou via USB;
+    - A tensão nominal de entrada para o VSYS é de 1,8V a 5,5V;
+- **Conexão com o Regulador Interno:**
+    - O regulador interno converte a tensão do VSYS para 3,3V (VREG), usada para alimentar os circuitos do microcontrolador;
+- **Fontes de Alimentação Prioritárias:**
+    - Se o Raspberry Pi Pico for alimentado tanto via USB quanto por VSYS, a prioridade será dada ao VSYS.
+
+Quando o transistor é acionado, o terminal 2 do buzzer é conectado ao GND, permitindo a passagem de corrente e, assim, acionando o buzzer.
+
+Não é possível acionar o buzzer diretamente com uma GPIO da Raspberry Pi Pico devido à corrente necessária para o acionamento, que excede os 12 mA suportados pela GPIO da placa, por isso a mediação é feita com um transistor, que amplifica a corrente que passa pelo buzzer.
+
+A BitDogLab oferece uma solução inovadora para a criação de som em modo estéreo, utilizando dois buzzers (A e B) simultaneamente, permitindo a emissão de sons distintos em cada canal, seja o esquerdo ou o direito. Isso não só enriquece a experiência auditiva, como também amplia as possibilidades de design de som, permitindo a criação de efeitos sonoros mais detalhados e imersivos. A reprodução estéreo é particularmente útil para criar efeitos tridimensionais no áudio, onde o ouvinte pode perceber a origem do som em diferentes direções, aprimorando a percepção espacial.
+
+Essa funcionalidade permite diversas aplicações, como a separação de instrumentos musicais ou trilhas de áudio em diferentes canais, onde, por exemplo, a melodia pode ser tocada em um buzzer enquanto o acompanhamento é executado no outro. Essa técnica também é útil para reproduzir sons que possuem divisões entre o canal esquerdo e o direito, comuns em áudios com efeito surround, criando uma experiência sonora mais envolvente e próxima da realidade.
 
 Com o GPIO necessário para acionar o buzzer definido, podemos desenhar o fluxograma contendo a lógica necessária para o acionamento do buzzer.
 
