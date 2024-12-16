@@ -15,9 +15,14 @@ Com essa configuração, um único pino do microcontrolador pode controlar a cor
 
 Este LED tem uma saída (DOUT) que pode ser conectada a um outro LED: assim, em fila, com um único pino, podemos controlar, individualmente, tanto a intensidade como a cor RGB de todos os LEDs desta fila. Os terminais de VDD e VSS são comuns com todos os LEDs da fila. Um esquema simplificado desta conexão é mostrado na figura a seguir:
 
+![Figura](images/2leds_connection.png)
+Figura: Esquema de conexão de dois LEDs endereçáveis.
+
 <details>
 
-<summary>LEDs Endereçáveis e Neopixel</summary>
+<summary>Mais sobre LEDs Endereçáveis</summary>
+
+### LEDs Endereçáveis e Neopixel
 
 Os LEDs endereçáveis, como os baseados no chip controlador WS2812 (e as variantes WS2812B, SK6812), permitem controle individual de cor e intensidade utilizando um único pino de dados digital.
 
@@ -26,9 +31,6 @@ Embora a marca Neopixel, registrada pela Adafruit Industries, seja amplamente co
 LEDs compatíveis com essa tecnologia são vendidos sob diferentes nomes, mantendo a mesma funcionalidade, o que facilita seu uso em projetos de iluminação programável.
 
 </details>
-
-![Figura](images/2leds_connection.png)
-Figura: Esquema de conexão de dois LEDs endereçáveis.
 
 Esta funcionalidade economiza muitos pinos e permite criar uma fita ou matriz de LEDs que podem ser conectadas em série, aumentando muito a sua capacidade de comunicação visual.
 
