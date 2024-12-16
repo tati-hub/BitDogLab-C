@@ -4,8 +4,33 @@ A seguir desenvolvemos, passo a passo,  as etapas de síntese de um programa - e
 ## Atividade:
 Vamos desenvolver um programa - em C - para apagar, com o pressionar do Botão A, um LED aceso indefinidamente (em azul). Note que o dado de entrada é dado pelo estado do botão: solto ou apertado, por outro lado, o dado de saída é sinalizado pelo LED RGB: apagado ou aceso (na cor do pino conectado). Com o pressionar do botão, modificamos o nível lógico do LED, fazendo-o apagar quando o botão está apertado. Note que o pino azul do LED está conectado ao GPIO 12 da BitDogLab, enquanto o pino do Botão A está conectado ao GPIO 5.
 
+## Entendendo o Problema:
+
+Nosso objetivo é controlar o estado do LED (aceso ou apagado) através do botão. Portanto, temos elementos para reconhecer cada bloco do nosso programa, mostrado na figura a seguir:
+
+![Figura](images/button-data_diagram.png)
+
+- O dado de entrada é dado pelo estado do botão: solto ou apertado
+- O processamento executa alguma operação booleana ou aritmética usando o dado de entrada para atribuir uma condição de saída.
+- A saída é um nível lógico que atua no LED, acendendo ou apagando-o.
+
 ## Desenvolvimento:
 
+### Definindo dados de entrada:
+Assim como no exemplo do Blink, a compreensão do mapeamento dos GPIOs do microcontrolador é essencial para entendermos claramente os passos seguintes. O RP2040 possui GPIOs que podem ser configurados - por software -  como entradas ou saídas digitais. Neste caso, vamos configurar o GPIO5 (conectado ao Botão A) como entrada. Também será feita a configuração dos resistores de pull-up ou pull-down internos que são conectados à entrada digital. Quando configuramos os GPIOs com resistores de pull-up internos, o estado padrão dos pinos será HIGH (alto). Você não precisa se preocupar com a conexão física deste botão, pois tudo ela já está feita na BitDogLab. Ao pressionar o botão, o pino será conectado ao GND, mudando o estado para LOW (baixo). Esta técnica simplifica o circuito, eliminando a necessidade de resistores externos e garante que a entrada não ficará flutuando, o que poderia resultar em erros de leitura na entrada.
+
+<details>
+   <summary>Para saber mais sobre este assunto:</summary>
+- https://blog.smartkits.com.br/entendendo-resistor-de-pull-up-e-pull-down/
+- https://clubedomaker.com/o-que-sao-resistores-de-pull-up-e-pull-down
+</details>
+
+Portanto, a entrada será comandada pelo estado do botão A. Se estiver solto o GPIO5 estará em nível lógico alto e se o botão for apertado o GPIO5 passará para nível lógico baixo.
+
+### Definindo dados de saída:
+Vamos usar o LED RGB para sinalizar o dado de saída. Desta forma, o estado do botão define o nível lógico da GPIO que está conectada ao terminal do LED. Este LED tem seu terminal azul conectado na GPIO12.
+
+### Definindo o processamento:
 Como ponto de partida, configuramos as interfaces de entrada (pino do botão) e saída (pino no LED) que serão usadas no nosso hardware para implementar este projeto. Em seguida, define-se um loop, para que o programa leia os dados de entrada e processe a saída indefinidamente.
 
 O processamento é definido por:
